@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Problem with Banners</title>
+    <style>
+        /* Same styling as before */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b103b; /* Dark blue background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #4CAF50; /* Green text */
+        }
+
+        form {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .form-group button {
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .bold-note {
+            font-weight: bold;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+
+        .confidential-note {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Report a Problem with Banners</h1>
+        <form action="submit-report.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Your Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label>Type of Problem</label>
+                <label><input type="radio" name="problem-type" value="client-based" required> Client-Based</label>
+                <label><input type="radio" name="problem-type" value="social-based"> Social-Based</label>
+            </div>
+            <div class="form-group">
+                <label for="banner-location">Banner Location/Description</label>
+                <input type="text" id="banner-location" name="banner-location" required>
+            </div>
+            <div class="form-group">
+                <label for="problem-description">Describe the Problem</label>
+                <textarea id="problem-description" name="problem-description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image-upload">Upload an Image (if any)</label>
+                <input type="file" id="image-upload" name="image-upload" accept="image/*">
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit Report</button>
+            </div>
+            <div class="bold-note">
+                We will review your report and take necessary actions. Thank you for helping us improve!
+            </div>
+            <div class="confidential-note">
+                Don't worry!! We will not disclose your identity at any cost.
+            </div>
+        </form>
+    </div>
+</body>
+</html>

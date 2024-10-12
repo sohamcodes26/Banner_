@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Mukt City</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            /* Ensure both html and body take up full height */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1b103b;
+            /* Fallback background color */
+            color: white;
+            position: relative;
+            overflow: hidden;
+            /* Prevent scrollbars from appearing */
+        }
+
+        .background-logo {
+            position: fixed;
+            /* Changed to fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./WhatsApp Image 2024-09-29 at 11.08.14_30d922e1.jpg');
+            /* Background image path */
+            background-size: cover;
+            /* This ensures the image covers the entire area */
+            background-position: center;
+            /* Centers the background image */
+            background-repeat: no-repeat;
+            /* Prevents the background from repeating */
+            opacity: 0.1;
+            /* Adjust opacity as needed */
+            z-index: -1;
+            /* Send to back */
+        }
+
+
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #1b103b;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            /* Adjust size as needed */
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav {
+            background-color: #333;
+            /* Darker shade for the navbar */
+            padding: 10px;
+            border-radius: 25px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff5033;
+        }
+
+        .user-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-icons a {
+            color: white;
+            margin: 0 10px;
+        }
+
+        .user-icons a:hover {
+            color: #ff5033;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-buttons button {
+            margin-left: 10px;
+            background-color: #ff5033;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #ff7043;
+        }
+
+        .banner {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .banner h2 {
+            font-size: 36px;
+            color: white;
+            text-shadow: 0 0 1px #ffd700, 0 0 1px #ffd700, 0 0 15px #ffd700;
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin-top: 20px;
+            max-width: 800px;
+            line-height: 1.5;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            margin: 0 10px;
+        }
+
+        .gallery-item img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff5033;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-btn:hover {
+            background-color: #ff7043;
+        }
+
+        /* Style for active nav item */
+        nav ul li a.active {
+            color: #ff5033;
+            font-weight: bold;
+        }
+
+        /* Section container */
+        #content {
+            padding: 20px;
+        }
+
+        .content-section {
+
+
+            margin-bottom: 40px;
+            /* Add space between sections */
+            padding: 20px;
+
+            border-radius: 10px;
+
+            text-align: center;
+            /* Center align text */
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            /* Adjust heading size */
+            margin-top: 100px;
+            margin-bottom: 20px;
+            /* Space below heading */
+        }
+
+        .content-section p {
+            font-size: 18px;
+            /* Increase paragraph font size */
+            line-height: 1.6;
+            /* Improve line height for readability */
+            max-width: 800px;
+            /* Limit width of paragraph */
+            margin-left: auto;
+            /* Center align */
+            margin-right: auto;
+            /* Center align */
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* Allow wrapping of items */
+            margin-bottom: 40px;
+            /* Space between gallery sections */
+        }
+
+        .gallery-item {
+            margin: 10px;
+            /* Space between images */
+            transition: transform 0.2s;
+            /* Smooth transform for hover effect */
+            cursor: pointer;
+            /* Change cursor to pointer */
+        }
+
+        .gallery-item img {
+            width: 250px;
+            /* Adjust image width */
+            height: 150px;
+            /* Adjust image height */
+            object-fit: cover;
+            /* Maintain aspect ratio */
+            border-radius: 10px;
+            /* Rounded corners */
+        }
+
+        .gallery-item:hover {
+            transform: scale(3);
+            /* Slightly scale up on hover */
+        }
+
+        /* Add a scrollable area for the gallery */
+        .content-section {
+            max-height: 80vh;
+            /* Set max height for the content section */
+            overflow-y: auto;
+            /* Allow vertical scrolling */
+        }
+
+        .feedback-container {
+            width: 400px;
+            /* Set a fixed width */
+            height: 300px;
+            /* Set a fixed height */
+            text-align: center;
+            background-color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            /* Use flexbox for centering */
+            flex-direction: column;
+            /* Align items vertically */
+            justify-content: center;
+            /* Center content vertically */
+            align-items: center;
+            /* Center content horizontally */
+            margin: auto;
+            /* Center the container horizontally */
+        }
+
+        .feedback-container h1 {
+            color: #ff5033;
+            margin-bottom: 20px;
+        }
+
+        .feedback-container p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .feedback-btn {
+            background-color: #ff5033;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .feedback-btn:hover {
+            background-color: #ff7043;
+        }
+
+        .feedback-btn:active {
+            transform: scale(0.98);
+        }
+        /* Style for active nav item */
+nav ul li a.active {
+    color: #ff5033; /* Active link color */
+    font-weight: bold; /* Bold font for the active link */
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="background-logo"></div> <!-- Background logo -->
+
+    <header>
+        <div class="logo">
+            <img src="./WhatsApp Image 2024-09-29 at 11.08.14_30d922e1.jpg" alt="Logo">
+            <h1>Go Digital</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')" class="nav-link active">Home</a></li>
+                <li><a href="#" onclick="showSection('gallery')" class="nav-link">Gallery</a></li>
+                <li><a href="#" onclick="showSection('feedback')" class="nav-link">Feedback</a></li>
+                <li><a href="#" onclick="checkLoginStatus();" class="nav-link">Services</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-icons">
+            <div class="auth-buttons" id="authButtons">
+                <button onclick="window.location.href='login.html'">Sign In</button>
+                <button onclick="window.location.href='signup.html'">Sign Up</button>
+            </div>
+            <div id="userStatus" style="display: none;">
+                <span id="loggedInAs"></span>
+                <button onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="content">
+        <!-- Home Section -->
+        <section id="home-section" class="content-section">
+            <h2>OUR LATEST DIGITAL BANNER IDEAS & INNOVATIONS</h2>
+            <p>Get ready to make a statement with our high-quality digital banners. Whether it's for a trade show,
+                outdoor
+                event, or special promotion, our banners are designed to create an impact without harming the
+                environment.
+                Our motive is to lead the transformation toward a city free from plastic banners by embracing digital
+                alternatives that offer greater flexibility and sustainability.
+
+                With our innovative digital banners, you can display multiple ads, incorporate dynamic content like QR
+                code
+                ads, and engage your audience in ways traditional banners cannot. Let’s work together to create a
+                cleaner,
+                smarter, and more connected city.</p>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery-section" class="content-section" style="display: none;">
+            <h2>Installed Digital Banners</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="./d1.jpeg" alt="Installed Digital Banner">
+                </div>
+                <div class="gallery-item">
+                    <img src="./d2.jpeg" alt="Installed Digital Banner 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="./d3.jpeg" alt="Installed Digital Banner 2">
+                </div>
+            </div>
+
+            <h2>Installed QR Codes</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="./q1.jpeg" alt="Installed QR Code 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="./q2.jpeg" alt="Installed QR Code 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="./q3.jpeg" alt="Installed QR Code 3">
+                </div>
+            </div>
+
+            <h2>Illegal Banners</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="./images (1).jpeg.jpg" alt="Illegal Banner 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="./images (2).jpeg.jpg" alt="Illegal Banner 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="./i3.jpeg" alt="Illegal Banner 3">
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Modal for viewing images -->
+        <div id="modal" class="modal" style="display: none;">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage" alt="Large View">
+            <div id="caption"></div>
+        </div>
+
+        <!-- Feedback Section -->
+               <!-- Feedback Section -->
+               <section id="feedback-section" class="content-section" style="display: none;">
+                <div class="feedback-container">
+                    <h1>We Value Your Feedback!</h1>
+                    <p>Click on the button below to give us your feedback.</p>
+                    <button class="feedback-btn" onclick="redirectToForm()">Give Feedback</button>
+                </div>
+            </section>
+    
+        </div>
+    
+        <button class="chat-btn" onclick="redirectToTelegram()">Let's Chat!</button>
+    
+        <script>
+            // Check login state on page load
+            window.onload = function () {
+                const loggedInUser = sessionStorage.getItem('loggedInUser');
+                const authButtons = document.getElementById('authButtons');
+                const userStatus = document.getElementById('userStatus');
+                const loggedInAs = document.getElementById('loggedInAs');
+    
+                if (loggedInUser) {
+                    // User is logged in
+                    authButtons.style.display = 'none'; // Hide Sign In and Sign Up buttons
+                    userStatus.style.display = 'flex'; // Show user status and Sign Out button
+                    loggedInAs.innerHTML = `Logged in as ${loggedInUser}`; // Display logged-in username
+                } else {
+                    // User is not logged in
+                    authButtons.style.display = 'flex'; // Show Sign In and Sign Up buttons
+                    userStatus.style.display = 'none'; // Hide user status and Sign Out button
+                }
+            }
+    
+            // Sign Out function
+            function signOut() {
+                sessionStorage.removeItem('loggedInUser'); // Clear session storage
+                alert("Signed out successfully."); // Alert message
+                window.location.reload(); // Reload the page
+            }
+    
+            function checkLoginStatus() {
+                const loggedInUser = sessionStorage.getItem('loggedInUser'); // Check login status
+                if (!loggedInUser) {
+                    alert("Please sign in to use the services."); // Display pop-up message
+                    window.location.href = 'login.html'; // Redirect to sign-in page
+                } else {
+                    window.open('requests.html', '_self'); // Open services in the same tab
+                }
+            }
+    
+            function showSection(section) {
+                document.querySelectorAll('.content-section').forEach(function (s) {
+                    s.style.display = 'none'; // Hide all sections
+                });
+                document.getElementById(section + '-section').style.display = 'block'; // Show selected section
+    
+                // Update active class on nav links
+                document.querySelectorAll('.nav-link').forEach(function (link) {
+                    link.classList.remove('active'); // Remove active class from all links
+                });
+                document.querySelector(`a[onclick="showSection('${section}')"]`).classList.add('active'); // Add active class to the clicked link
+            }
+    
+            function redirectToForm() {
+                // Open the Google Forms URL in a new tab
+                window.open('https://docs.google.com/forms/d/e/1FAIpQLSdKEXvZNKilkP9LOw_om9HG3Z64D1ec6mCoJ0WcG-j2sJYfiQ/viewform', '_blank');
+            }
+    
+            function redirectToTelegram() {
+                window.location.href = 'https://t.me/+zgtfxmqR1qxjM2Fl';
+            }
+        </script>
+    </body>
+    
+    </html>
+    

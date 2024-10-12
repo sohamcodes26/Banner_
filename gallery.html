@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Mukt City</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1b103b;
+            color: white;
+            position: relative;
+            /* Added to position the background */
+            overflow: hidden;
+            /* Prevent scrollbars from appearing */
+        }
+
+        /* Add this class for the background logo */
+        .background-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./WhatsApp Image 2024-09-29 at 11.08.14_30d922e1.jpg');
+            /* Adjust the path as needed */
+            background-size: cover;
+            /* This ensures the image covers the entire area */
+            background-position: center;
+            /* Centers the background image */
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            /* Adjust opacity as needed */
+            z-index: -1;
+            /* Send to back */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #1b103b;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            /* Adjust size as needed */
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav {
+            background-color: #333;
+            /* Darker shade for the navbar */
+            padding: 10px;
+            border-radius: 25px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ff5033;
+        }
+
+        .user-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-icons a {
+            color: white;
+            margin: 0 10px;
+        }
+
+        .user-icons a:hover {
+            color: #ff5033;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-buttons button {
+            margin-left: 10px;
+            background-color: #ff5033;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #ff7043;
+        }
+
+        
+        .chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff5033;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-btn:hover {
+            background-color: #ff7043;
+        }
+
+        section
+        {
+            background-color: rgb(8, 8, 67);
+        }
+    
+        section div h1{
+            text-align: center;
+            font-size: 3em;
+            padding-top: 10px;
+            color: #ff5033;
+
+        }
+
+        .cont
+        {
+            display: flex;
+        }
+
+        .cont div
+        {
+            border: 2px solid black;
+            margin: 5px;
+            margin: 30px auto;
+            width: 500px;
+            height: 600px;
+            font-size: 1.8em;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgb(29, 29, 29);
+        }
+
+
+        .cont div div
+        {
+            border: 2px solid black;
+            width: 450px;
+            height: 500px;
+            margin: auto;
+            margin-top: 25px;
+            text-align: center;
+            padding: 200px 0px;
+            font-size: 1.5rem;
+            background-color: black;
+        }
+
+        .imgcon
+        {   
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            justify-items: center;
+            padding: 10px;
+        }
+
+        img
+        {
+            width: 410px;
+            margin: 10px auto
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="background-logo"></div> <!-- Background logo -->
+
+    <header>
+        <div class="logo">
+            <img src="background-logo.jpg" alt="Logo"> <!-- Updated logo image path -->
+            <h1>Go Digital</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="feedback.html" target="_blank">Feedback</a></li>
+                <li><a href="#">More</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-icons">
+            <a href="#"><i class="fas fa-shopping-bag"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <div class="auth-buttons">
+                <button onclick="window.location.href='login.html'">Sign In</button>
+                <button onclick="window.location.href='signup.html'">Sign Up</button>
+            </div>
+        </div>
+       
+    </header>
+
+    <section>
+        <div>
+            <h1>Gallery</h1>
+        </div>
+
+        <div class="cont">
+            <div>
+                <p>Installed Digital Banners</p>
+                <div>No Media Uploaded</div>
+            </div>
+            <div>
+                <p>Installed QR codes</p>
+                <div>No Media Uploaded</div>
+            </div>
+            <div>
+                <p>Illegal Banners</p>
+                <div class="imgcon">
+                    <img src="images.jpeg" alt="image1">
+                    <img src="images (1).jpeg" alt="image2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="chat-btn" onclick="redirectToTelegram()">Let's Chat!</button>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        function redirectToTelegram() {
+            window.location.href = 'https://t.me/+zgtfxmqR1qxjM2Fl';
+        }
+    </script>
+</body>
+
+</html>

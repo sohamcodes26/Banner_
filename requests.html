@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests</title>
+    <style>
+        /* Your existing styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1b103b; /* Background color */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 90%;
+            width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white; /* White background for container */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #00796b; /* Darker teal color */
+            font-size: 28px; /* Larger font size */
+            font-weight: bold; /* Bold font */
+        }
+
+        .action {
+            display: inline-block;
+            width: calc(30% - 20px); /* Three items per row with margin */
+            height: 120px; /* Smaller height */
+            margin: 10px; /* Space between action buttons */
+            padding: 15px; /* Less padding for smaller boxes */
+            background: linear-gradient(135deg, #66bb6a, #43a047); /* Gradient background */
+            color: white;
+            border-radius: 15px; /* Rounded corners */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+            position: relative; /* Position for pseudo-element */
+            overflow: hidden; /* Hide overflow for pseudo-element */
+            line-height: 120px; /* Center text vertically */
+        }
+
+        .action:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .action::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.2); /* White overlay */
+            opacity: 0; /* Start hidden */
+            transition: opacity 0.3s; /* Smooth transition */
+        }
+
+        .action:hover::after {
+            opacity: 1; /* Show overlay on hover */
+        }
+
+        @media (max-width: 768px) {
+            .action {
+                width: calc(100% - 20px); /* Full width on smaller screens */
+                line-height: normal; /* Reset line height */
+            }
+        }
+
+        #user-info {
+            display: none;
+            background-color: white; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            margin-top: 20px; /* Space above the user info */
+            color: #333; /* Text color */
+        }
+
+        #user-info h2 {
+            color: #00796b; /* Darker teal color */
+            margin-bottom: 15px; /* Space below heading */
+        }
+
+        #user-info p {
+            margin: 10px 0; /* Space above and below paragraphs */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose an Action</h1>
+        <div class="action" onclick="window.location.href='digital-banner.html'">Ads on Digital Banner</div>
+        <div class="action" onclick="window.location.href='qr-code.html'">QR Code Ads</div>
+        <div class="action" onclick="window.location.href='other-request.html'">Report a Problem</div>
+        <div class="action" onclick="window.location.href='status.html'">View Status</div>
+        <div class="action" onclick="displayUserInfo()">Your Info</div>
+    </div>
+    
+    <div id="user-info" style="display: none;">
+        <h2>Your Information</h2>
+        <p id="fullName"></p>
+        <p id="username"></p>
+        <p id="email"></p>
+        <p id="mobileNumber"></p>
+    </div>
+    
+    <script>
+        function displayUserInfo() {
+            fetch('fetch_user_info.php') // Make an AJAX call to the PHP script
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error); // Show error if there's one
+                    } else {
+                        // Display user info
+                        document.getElementById('fullName').innerText = "Full Name: " + data.fullName;
+                        document.getElementById('username').innerText = "Username: " + data.username; // Updated to use data.username
+                        document.getElementById('email').innerText = "Email: " + data.email;
+                        document.getElementById('mobileNumber').innerText = "Mobile Number: " + data.mobileNumber;
+                        document.getElementById('user-info').style.display = 'block'; // Show user info section
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching user info:', error);
+                    alert('An error occurred while fetching user info.');
+                });
+        }
+    </script>
+</body>
+</html>

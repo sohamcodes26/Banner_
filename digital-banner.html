@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Ad on Digital Banner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b103b; 
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        form {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .form-group button {
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        .legal-note {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .bold-note {
+            font-weight: bold;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Place Your Ad on a Digital Banner</h1>
+        <form id="digitalBannerForm" action="submit-banner.php" method="post" enctype="multipart/form-data" onsubmit="return handleFormSubmit(event)">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Your Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="ad-size">Ad Size</label>
+                <select id="ad-size" name="ad-size">
+                    <option value="728x90">728x90</option>
+                    <option value="300x250">300x250</option>
+                    <option value="160x600">160x600</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ad-type">Ad Type</label>
+                <select id="ad-type" name="ad-type">
+                    <option value="static">Static</option>
+                    <option value="animated">Animated</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ad-content">Ad Content</label>
+                <textarea id="ad-content" name="ad-content" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="files">Upload Files</label>
+                <input type="file" id="files" name="files[]" multiple>
+            </div>
+            <div class="form-group">
+                <label for="instructions">Additional Instructions</label>
+                <textarea id="instructions" name="instructions" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="area">Choose Area</label>
+                <select id="area" name="area" required>
+                    <option value="">Select Area</option>
+                    <option value="area1">Area 1</option>
+                    <option value="area2">Area 2</option>
+                    <option value="area3">Area 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="legal" name="legal" required>
+                <label for="legal" class="legal-note">
+                    I assure my ad is legal and does not contain any misleading or religiously harmful information. I also have prior permission to place my ad.
+                </label>
+            </div>
+            <div class="form-group button">
+                <button type="submit">Submit</button>
+            </div>
+            <div class="bold-note button">
+                We will soon contact you, stay awaited!
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const form = document.getElementById('digitalBannerForm');
+            const formData = new FormData(form);
+
+            fetch('submit-banner.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Form submitted successfully!'); // Popup message
+                    form.reset(); // Reset the form
+                } else {
+                    alert('Error submitting form. Please try again.');
+                }
+            })
+            .catch(error => {
+                alert('An error occurred. Please try again.');
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

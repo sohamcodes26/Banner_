@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://m.media-amazon.com/images/I/61bSKe21IlL._AC_UF894,1000_QL80_.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+    box-sizing: border-box;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffdd57;
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+.login-signup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.form-container {
+    flex: 1 1 300px; /* Flexible width, minimum width of 300px */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1.5s ease;
+    box-sizing: border-box;
+    max-width: 500px; /* Adjusted to prevent excessive width */
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #ffdd57;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: calc(100% - 20px); /* Subtract padding */
+    padding: 10px;
+    margin: 10px 0; /* Adjust margin to look better */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+button {
+    width: calc(100% - 20px); /* Subtract padding */
+    padding: 10px;
+    border: none;
+    background-color: #ffdd57;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+button:hover {
+    background-color: #ffae00;
+}
+
+.requests {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffdd57, 0 0 30px #ffdd57, 0 0 40px #ffdd57; }
+    50% { text-shadow: none; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-signup {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 400px; /* Max width to prevent it from becoming too wide */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], button {
+        font-size: 0.9rem;
+    }
+}
